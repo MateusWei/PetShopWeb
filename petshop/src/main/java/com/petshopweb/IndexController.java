@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 // classe de teste
 // teste 1
+// teste 2
 
 @Controller
 public class IndexController {
