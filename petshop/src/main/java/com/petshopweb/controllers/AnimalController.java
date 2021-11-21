@@ -1,30 +1,37 @@
 package com.petshopweb.controllers;
 
-import java.util.ArrayList;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
 import com.petshopweb.models.Animal;
+import com.petshopweb.repository.AnimalRepository;
 
 @Controller
 public class AnimalController {
-	
-	private ArrayList<Animal> animais;
-	
-	public void cadastrar(Animal a) {
-		this.animais.add(a);
-		//ver como vai ser no banco de dados
-		//colocar restrições
+
+	@Autowired
+	private AnimalRepository ar;
+
+	@RequestMapping(value = "/cadastrarAnimal", method = RequestMethod.GET)
+	public String cadastrar() {
+
+		return "cadastro/animal";
 	}
-	
-	public void remover(Animal a) {
-		this.animais.remove(a);
-		//ver como vai ser no banco de dados
-		//colocar restrições
+
+	@RequestMapping(value = "/cadastrarAnimal", method = RequestMethod.POST)
+	public String cadastrar(Animal a) {
+		ar.save(a);
+		return "redirect:/";
 	}
-	
-	public void editar(Animal a) {
-		int indexUsuario = this.animais.indexOf(a);
-		this.animais.set(indexUsuario, a);
-		//ver como vai ser no banco de dados
-		//colocar restrições
+
+	@RequestMapping("/animais")
+	public ModelAndView listaAnimais() {
+		ModelAndView mv = new ModelAndView("menu");
+		Iterable<Animal> animais = ar.findAll();
+		mv.addObject("animais", animais);
+		return mv;
 	}
 }

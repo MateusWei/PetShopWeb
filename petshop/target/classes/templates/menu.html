@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+	<title>Menu</title>
+</head>
+
+<body>
+	<h3> olá mundo</h3>
+	<h3><a href="/cadastrarAnimal">Cadastrar Animal</a></h3>
+
+	<div th:each="animal : ${animais}">
+		<div class="row">
+			<p><span th:text="${animal.nome}"></span></p>
+		</div>
+	</div>
+</body>
+
+</html>

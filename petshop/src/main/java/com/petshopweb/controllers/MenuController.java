@@ -1,16 +1,14 @@
-package com.petshopweb;
+package com.petshopweb.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-// classe de teste
-// teste 1
-// teste 2
+// vai ser a primeira página
 
 @Controller
-public class IndexController {
+public class MenuController {
 	@RequestMapping("/")
-	public String index() {
-		return "index";
+	public String menu() {
+		return "menu";
 	}
 }
