@@ -7,7 +7,11 @@
 
 <body>
 	<h3><a href="/menu">Voltar</a></h3>
-
+	<div th:each="pedido : ${pedidos}">
+		<div class="row">
+			<p><span th:text="${pedido.nome}"></span></p>
+		</div>
+	</div>
 	
 </body>
 

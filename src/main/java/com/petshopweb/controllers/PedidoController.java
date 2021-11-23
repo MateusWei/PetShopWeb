@@ -15,7 +15,15 @@ public class PedidoController {
 	@Autowired
 	private PedidoRepository ar;
 	
+	@RequestMapping(value="/criarPedido", method=RequestMethod.GET)
+	public String criar() {
+		return "criarPedido";
+	}
 	
+	@RequestMapping(value="/menu", method=RequestMethod.GET)
+	public String voltar() {
+		return "menu";
+	}
 	
 	@RequestMapping(value="/criarPedido", method=RequestMethod.POST)
 	public String criar(Pedido a) {
@@ -25,7 +33,7 @@ public class PedidoController {
 	
 	@RequestMapping("/listarPedidos")
 	public ModelAndView listaPedidos() {
-		ModelAndView mv = new ModelAndView("menu");
+		ModelAndView mv = new ModelAndView("listarPedidos");
 		Iterable<Pedido> pedidos = ar.findAll();
 		mv.addObject("pedidos", pedidos);
 		return mv;
