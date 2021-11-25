@@ -38,4 +38,26 @@ public class PedidoController {
 		mv.addObject("pedidos", pedidos);
 		return mv;
 	}
+	/*
+	@RequestMapping("/{data}")
+	public ModelAndView pedidosPorData(@PathVariable("data") LocalDate data) {
+		ModelAndView mp = new ModelAndView("pedidosPorData");
+		Iterable<Pedido> rep = ar.findAll();
+		
+		for(Pedido p : rep) {
+			if(p.getData() == data) {
+				Iterable<Pedido> pedidos = (Iterable<Pedido>) p;
+			}
+		}
+		mp.addObject("pedidos", data);
+		return mp;
+	}
+	
+	@RequestMapping("/deletar")
+	public String deletar(long codigo) {
+		Pedido pedido = ar.findByCodigo(codigo);
+		ar.delete(pedido);
+		return "redirect:/listarPedidos";
+	}
+	*/
 }

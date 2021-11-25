@@ -1,7 +1,6 @@
 package com.petshopweb.models;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +16,7 @@ public class Pedido implements Serializable{
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private long codigo;
 	
-	private LocalDate data;
+	private String data;
 	private String nome;
 	private String email;
 	private String servico;
@@ -54,10 +53,10 @@ public class Pedido implements Serializable{
 	public void setAnimal(String animal) {
 		this.animal = animal;
 	}
-	public LocalDate getData() {
+	public String getData() {
 		return data;
 	}
-	public void setData(LocalDate data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 }
