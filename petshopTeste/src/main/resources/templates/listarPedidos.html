@@ -36,7 +36,6 @@
 				<td><span th:text="${pedido.servico}"></span></td>
 				<td><span th:text="${pedido.animal}"></span></td>
 				<td><span th:text="${pedido.valor}"></span></td>
-				<td><a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('EC#deletar').arg(0, pedido.codigo)).build()}"><i class="material-icons left">delete</i></a></td>
 			</tr >
 		</tbody>
 	</table>
