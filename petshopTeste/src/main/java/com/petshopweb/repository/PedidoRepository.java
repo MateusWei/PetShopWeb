@@ -6,6 +6,6 @@ import com.petshopweb.models.Pedido;
 
 public interface PedidoRepository extends JpaRepository<Pedido, String>{
 
-	Pedido findByCodigo(long codigo);
+	//Pedido findByCodigo(long codigo);
 
 }

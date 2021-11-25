@@ -1,10 +1,7 @@
 package com.petshopweb.controllers;
 
-import java.time.LocalDate;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -55,11 +52,12 @@ public class PedidoController {
 		mp.addObject("pedidos", data);
 		return mp;
 	}
-	*/
+	
 	@RequestMapping("/deletar")
 	public String deletar(long codigo) {
 		Pedido pedido = ar.findByCodigo(codigo);
 		ar.delete(pedido);
 		return "redirect:/listarPedidos";
 	}
+	*/
 }
