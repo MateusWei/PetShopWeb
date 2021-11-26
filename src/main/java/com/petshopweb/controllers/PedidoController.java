@@ -1,10 +1,15 @@
 package com.petshopweb.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.petshopweb.models.Pedido;
 import com.petshopweb.repository.PedidoRepository;
@@ -26,7 +31,13 @@ public class PedidoController {
 	}
 	
 	@RequestMapping(value="/criarPedido", method=RequestMethod.POST)
-	public String criar(Pedido a) {
+	public String criar(@Valid Pedido a, BindingResult result, RedirectAttributes attributes) {
+		if(result.hasErrors()){
+			attributes.addFlashAttribute("flashMessage", "Verifique os campos!");
+			attributes.addFlashAttribute("flashType", "danger");
+			return "redirect:/criarPedido";
+		}
+		
 		ar.save(a);
 		return "redirect:/menu";
 	}
@@ -52,12 +63,12 @@ public class PedidoController {
 		mp.addObject("pedidos", data);
 		return mp;
 	}
-	
-	@RequestMapping("/deletar")
-	public String deletar(long codigo) {
+	*/
+	@RequestMapping("/deletarPedido/{codigo}")
+	public String deletarPedido(@PathVariable("codigo")long codigo) {
 		Pedido pedido = ar.findByCodigo(codigo);
 		ar.delete(pedido);
 		return "redirect:/listarPedidos";
 	}
-	*/
+	
 }
